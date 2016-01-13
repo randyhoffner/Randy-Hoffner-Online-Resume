@@ -32,13 +32,13 @@ $("#header").append(formattedWelcomeMsg);
 
 
 for (i in formattedContactInfo) {
-$("#topContacts").append(formattedContactInfo[i])
-$("#footerContacts").append(formattedContactInfo[i]);
+  $("#topContacts").append(formattedContactInfo[i])
+  $("#footerContacts").append(formattedContactInfo[i]);
 }
 
 
 
- if(bio.skills.length > 0) {
+if (bio.skills.length > 0) {
   $("#header").append(HTMLskillsStart);
 
   for (i in bio.skills) {
@@ -48,93 +48,78 @@ $("#footerContacts").append(formattedContactInfo[i]);
 
 
 var work = {
-  "jobs": [
-    {
+  "jobs": [{
     "employer": "NBC",
     "title": "Sr Staff Engineer, Director R&D, Director Future Technology",
     location: "New York, NY",
     "dates": "1979-1994",
     "description": "Cutting edge technology projects, director of evaluation lab and HDTV lab."
-  },
-  {
+  }, {
     "employer": "CBS",
-  "title": "Manager of Network Distribution Systems",
-  "location": "New York, NY",
-  "dates": "1995-1996",
-  "description": "Managed network satellite distribution and backhaul systems."
-    },
-    {
-      "employer": "ABC",
-      "title": "Manager, Technology and Quality Control",
-      "location": "New York, NY, Los Angeles, CA",
-      "dates": "1996-2007",
-      "description": "Managed projects in advanced TV and HDTV. Taught classes on digital and HDTV. Wrote and maintained ABC HDTV program delivery specification.  Established and managed production and delivery of video on demand programming."
-    },
-    {
-      "employer": "AZCAR Systems Integration and Consulting",
-      "title": "Senior Consulting Engineer",
-      "location": "Los Angeles, CA",
-      "dates": "2008-2010",
-      "description": "Consulted with television facilities regarding upgrades and improvements to their technical plants and operations."
-    }
-  ]
+    "title": "Manager of Network Distribution Systems",
+    "location": "New York, NY",
+    "dates": "1995-1996",
+    "description": "Managed network satellite distribution and backhaul systems."
+  }, {
+    "employer": "ABC",
+    "title": "Manager, Technology and Quality Control",
+    "location": "New York, NY, Los Angeles, CA",
+    "dates": "1996-2007",
+    "description": "Managed projects in advanced TV and HDTV. Taught classes on digital and HDTV. Wrote and maintained ABC HDTV program delivery specification.  Established and managed production and delivery of video on demand programming."
+  }, {
+    "employer": "AZCAR Systems Integration and Consulting",
+    "title": "Senior Consulting Engineer",
+    "location": "Los Angeles, CA",
+    "dates": "2008-2010",
+    "description": "Consulted with television facilities regarding upgrades and improvements to their technical plants and operations."
+  }]
 };
 
 var education = {
-    "schools":  [
-      {
-       "name": "University of Tulsa",
-        "dates": "1965-1967",
-        "location": "Tulsa, OK",
-        "degree": "BA",
-        "major": "Sociology",
-        "url": "http://www.utulsa.edu"
-        },
-        {
-          "name": "Oklahoma City University",
-          "dates":  "1962-1965",
-          "location": "Oklahoma City, OK",
-          "degree": "attended",
-          "major": "Chemistry",
-          "url": "http://www.okcu.edu"
-        }
-      ],
-      "onlineCourses": [
-        {
-          "school":"Udacity",
-          "title": "Intro to HTML and CSS",
-          "completed": "November 2015",
-          "url": "https://www.udacity.com/course/ud304"
-      },
-      {
-          "school": "Udacity",
-          "title": "Responsive Web Design Fundamentals",
-          "completed": "November 2015",
-          "url": "https://www.udacity.com/course/ud893"
-      }
-    ]
-  };
+  "schools": [{
+    "name": "University of Tulsa",
+    "dates": "1965-1967",
+    "location": "Tulsa, OK",
+    "degree": "BA",
+    "major": "Sociology",
+    "url": "http://www.utulsa.edu"
+  }, {
+    "name": "Oklahoma City University",
+    "dates": "1962-1965",
+    "location": "Oklahoma City, OK",
+    "degree": "attended",
+    "major": "Chemistry",
+    "url": "http://www.okcu.edu"
+  }],
+  "onlineCourses": [{
+    "school": "Udacity",
+    "title": "Intro to HTML and CSS",
+    "completed": "November 2015",
+    "url": "https://www.udacity.com/course/ud304"
+  }, {
+    "school": "Udacity",
+    "title": "Responsive Web Design Fundamentals",
+    "completed": "November 2015",
+    "url": "https://www.udacity.com/course/ud893"
+  }]
+};
 
 
-  var projects = {
-      "projects": [
-      {
-        "title": "DTV Encoder Acquisition",
-        "dates": "1997-1998",
-        "description": "Led effort to purchase original DTV/HTDV encoders for ABC TV network and owned stations.  Wrote RFI and RFP.  Met with manufacturers regarding requirements."
-      },
-      {
-        "title": "Executive producer, Technology Leadership Summit 2012",
-        "dates": "2011-2012",
-        "description": "Produced two-day technology summit for invited TV executives.  Recruited keynote speakers and panel participants.  Produced program for the event including panel discussion topics."
-      },
-      {
-        "title": "Immersive Audio Demonstration",
-        "dates": "March-July 2015",
-        "description": "Participated in setup and demonstration of immersive audio mounted by a major European company.  Four-room demo at NAB broadcasters convention in Las Vegas, NV, in April and repeated in July at an industry meeting in Atlanta, GA."
-      }
-    ]
-  };
+var projects = {
+  "projects": [{
+    "title": "DTV Encoder Acquisition",
+    "dates": "1997-1998",
+    "description": "Led effort to purchase original DTV/HTDV encoders for ABC TV network and owned stations.  Wrote RFI and RFP.  Met with manufacturers regarding requirements."
+  }, {
+    "title": "Executive producer, Technology Leadership Summit 2012",
+    "dates": "2011-2012",
+    "description": "Produced two-day technology summit for invited TV executives.  Recruited keynote speakers and panel participants.  Produced program for the event including panel discussion topics."
+  }, {
+    "title": "Immersive Audio Demonstration",
+    "dates": "March-July 2015",
+    "description": "Participated in setup and demonstration of immersive audio mounted by a major European company.  Four-room demo at NAB broadcasters convention in Las Vegas, NV, in April and repeated in July at an industry meeting in Atlanta, GA."
+  }]
+};
 
 
 
@@ -168,12 +153,12 @@ displayWork();
 $(document).click(function(loc) {
   var x = loc.pageX;
   var y = loc.pageY;
-  logClicks(x,y);
+  logClicks(x, y);
 });
 
 
 projects.display = function() {
-  for (project in projects.projects){
+  for (project in projects.projects) {
     $("#projects").append(HTMLprojectStart);
 
     var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
@@ -196,39 +181,39 @@ projects.display = function() {
 projects.display();
 
 education.display = function() {
-if (education.schools.length >0) {
-      for (i in education.schools) {
-        $("#education").append(HTMLschoolStart);
+  if (education.schools.length > 0) {
+    for (i in education.schools) {
+      $("#education").append(HTMLschoolStart);
 
-        var formattedSchoolName = HTMLschoolName.replace("%data%",  education.schools[i].name).replace("#", education.schools[i].url);
-        var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
-        var formattedSchoolDates = HTMLschoolDates.replace("%data%",     education.schools[i].dates);
+      var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[i].name).replace("#", education.schools[i].url);
+      var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+      var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
 
-        $(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree);
-        $(".education-entry:last").append(formattedSchoolDates);
+      $(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree);
+      $(".education-entry:last").append(formattedSchoolDates);
 
-        var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
-        $(".education-entry:last").append(formattedSchoolLocation);
+      var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
+      $(".education-entry:last").append(formattedSchoolLocation);
 
-        var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
-        $(".education-entry:last").append(formattedSchoolMajor);
+      var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
+      $(".education-entry:last").append(formattedSchoolMajor);
     }
 
 
-      if(education.onlineCourses.length > 0) {
+    if (education.onlineCourses.length > 0) {
       $("#education").append(HTMLonlineClasses);
       for (i in education.onlineCourses) {
-      $("#education").append(HTMLschoolStart);
+        $("#education").append(HTMLschoolStart);
 
         var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title).replace("#", education.onlineCourses[i].url);
         var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
-        $(".education-entry:last").append(formattedOnlineTitle +formattedOnlineSchool);
+        $(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
 
         var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].completed);
         $(".education-entry:last").append(formattedOnlineDates);
 
         var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url).replace("#", education.onlineCourses[i].url);
-          $(".education-entry:last").append(formattedOnlineURL);
+        $(".education-entry:last").append(formattedOnlineURL);
       }
     }
   }
