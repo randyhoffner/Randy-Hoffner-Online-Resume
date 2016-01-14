@@ -14,6 +14,17 @@ var bio = {
 };
 
 
+bio.display = function() {
+
+  if (bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+
+    for (var i in bio.skills) {
+      $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+    }
+  }
+};
+
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
@@ -38,16 +49,7 @@ for (var i in formattedContactInfo) {
 }
 
 
-bio.display = function() {
 
-  if (bio.skills.length > 0) {
-    $("#header").append(HTMLskillsStart);
-
-    for (i in bio.skills) {
-      $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
-    }
-  }
-};
 
 bio.display ();
 
@@ -100,12 +102,12 @@ var education = {
   "onlineCourses": [{
     "school": "Udacity",
     "title": "Intro to HTML and CSS",
-    "completed": "November 2015",
+    "date": "November 2015",
     "url": "https://www.udacity.com/course/ud304"
   }, {
     "school": "Udacity",
     "title": "Responsive Web Design Fundamentals",
-    "completed": "November 2015",
+    "date": "November 2015",
     "url": "https://www.udacity.com/course/ud893"
   }]
 };
@@ -182,7 +184,7 @@ projects.display();
 
 education.display = function() {
   if (education.schools.length > 0) {
-    for (i in education.schools) {
+    for (var i in education.schools) {
       $("#education").append(HTMLschoolStart);
 
       var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[i].name).replace("#", education.schools[i].url);
@@ -209,7 +211,7 @@ education.display = function() {
         var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
         $(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
 
-        var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].completed);
+        var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].date);
         $(".education-entry:last").append(formattedOnlineDates);
 
         var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url).replace("#", education.onlineCourses[i].url);
