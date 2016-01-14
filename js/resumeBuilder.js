@@ -10,18 +10,19 @@ var bio = {
   },
   "welcomeMessage": "Welcome to Randy Hoffner's resume.",
   "skills": ["tv technologist", "technical writer", "photoshop adept"],
-  "picture": "images/randy.jpg",
+  "biopic": "images/randy.jpg",
 };
 
 
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedBioPic = HTMLbioPic.replace("%data%", bio.picture);
+var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 var formattedContactInfo = [];
 formattedContactInfo.push(HTMLemail.replace("%data%", bio.contacts.email));
 formattedContactInfo.push(HTMLmobile.replace("%data%", bio.contacts.mobile));
 formattedContactInfo.push(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+formattedContactInfo.push(HTMLgithub.replace("%data%", bio.contacts.github));
 formattedContactInfo.push(HTMLlocation.replace("%data%", bio.contacts.location));
 
 $("#header").prepend(formattedName);
@@ -37,14 +38,19 @@ for (var i in formattedContactInfo) {
 }
 
 
+bio.display = function() {
 
-if (bio.skills.length > 0) {
-  $("#header").append(HTMLskillsStart);
+  if (bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
 
-  for (i in bio.skills) {
-    $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+    for (i in bio.skills) {
+      $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+    }
   }
-}
+};
+
+bio.display ();
+
 
 
 var work = {
@@ -122,14 +128,7 @@ var projects = {
 };
 
 
-
-
-
-
-
-
-
-function displayWork() {
+work.display = function() {
   for (var job in work.jobs) {
     $("#workExperience").append(HTMLworkStart);
 
@@ -147,8 +146,9 @@ function displayWork() {
     var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
     $(".work-entry:last").append(formattedDescription);
   }
-}
-displayWork();
+};
+work.display();
+
 
 $(document).click(function(loc) {
   var x = loc.pageX;
