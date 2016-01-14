@@ -1378,7 +1378,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
   // ID find and filter
   if ( support.getById ) {
-    Expr.find["ID"] = function( id, context ) {
+    Expr.find.ID = function( id, context ) {
       if ( typeof context.getElementById !== strundefined && documentIsHTML ) {
         var m = context.getElementById( id );
         // Check parentNode to catch when Blackberry 4.6 returns
@@ -1386,7 +1386,7 @@ setDocument = Sizzle.setDocument = function( node ) {
         return m && m.parentNode ? [m] : [];
       }
     };
-    Expr.filter["ID"] = function( id ) {
+    Expr.filter.ID = function( id ) {
       var attrId = id.replace( runescape, funescape );
       return function( elem ) {
         return elem.getAttribute("id") === attrId;
@@ -1395,9 +1395,9 @@ setDocument = Sizzle.setDocument = function( node ) {
   } else {
     // Support: IE6/7
     // getElementById is not reliable as a find shortcut
-    delete Expr.find["ID"];
+    delete Expr.find.ID;
 
-    Expr.filter["ID"] =  function( id ) {
+    Expr.filter.ID =  function( id ) {
       var attrId = id.replace( runescape, funescape );
       return function( elem ) {
         var node = typeof elem.getAttributeNode !== strundefined && elem.getAttributeNode("id");
@@ -1407,7 +1407,7 @@ setDocument = Sizzle.setDocument = function( node ) {
   }
 
   // Tag
-  Expr.find["TAG"] = support.getElementsByTagName ?
+  Expr.find.TAG = support.getElementsByTagName ?
     function( tag, context ) {
       if ( typeof context.getElementsByTagName !== strundefined ) {
         return context.getElementsByTagName( tag );
@@ -1433,7 +1433,7 @@ setDocument = Sizzle.setDocument = function( node ) {
     };
 
   // Class
-  Expr.find["CLASS"] = support.getElementsByClassName && function( className, context ) {
+  Expr.find.CLASS = support.getElementsByClassName && function( className, context ) {
     if ( typeof context.getElementsByClassName !== strundefined && documentIsHTML ) {
       return context.getElementsByClassName( className );
     }
@@ -1849,7 +1849,7 @@ Expr = Sizzle.selectors = {
       var excess,
         unquoted = !match[5] && match[2];
 
-      if ( matchExpr["CHILD"].test( match[0] ) ) {
+      if ( matchExpr.CHILD.test( match[0] ) ) {
         return null;
       }
 
@@ -1899,7 +1899,7 @@ Expr = Sizzle.selectors = {
       return function( elem ) {
         var result = Sizzle.attr( elem, name );
 
-        if ( result == null ) {
+        if ( result === null ) {
           return operator === "!=";
         }
         if ( !operator ) {
@@ -2172,7 +2172,7 @@ Expr = Sizzle.selectors = {
     },
 
     "parent": function( elem ) {
-      return !Expr.pseudos["empty"]( elem );
+      return !Expr.pseudos.empty( elem );
     },
 
     // Element/input types
@@ -2195,7 +2195,7 @@ Expr = Sizzle.selectors = {
       // use getAttribute instead to test this case
       return elem.nodeName.toLowerCase() === "input" &&
         elem.type === "text" &&
-        ( (attr = elem.getAttribute("type")) == null || attr.toLowerCase() === elem.type );
+        ( (attr = elem.getAttribute("type")) === null || attr.toLowerCase() === elem.type );
     },
 
     // Position-in-collection
@@ -2245,7 +2245,7 @@ Expr = Sizzle.selectors = {
   }
 };
 
-Expr.pseudos["nth"] = Expr.pseudos["eq"];
+Expr.pseudos.nth = Expr.pseudos.eq;
 
 // Add button/input type pseudos
 for ( i in { radio: true, checkbox: true, file: true, password: true, image: true } ) {
@@ -2581,12 +2581,12 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
         matchedCount = 0,
         i = "0",
         unmatched = seed && [],
-        outermost = expandContext != null,
+        outermost = expandContext !== null,
         contextBackup = outermostContext,
         // We must always have either seed elements or context
-        elems = seed || byElement && Expr.find["TAG"]( "*", expandContext && context.parentNode || context ),
+        elems = seed || byElement && Expr.find.TAG( "*", expandContext && context.parentNode || context ),
         // Use integer dirruns iff this is the outermost matcher
-        dirrunsUnique = (dirruns += contextBackup == null ? 1 : Math.random() || 0.1);
+        dirrunsUnique = (dirruns += contextBackup === null ? 1 : Math.random() || 0.1);
 
       if ( outermost ) {
         outermostContext = context !== document && context;
@@ -2721,7 +2721,7 @@ function select( selector, context, results, seed ) {
           support.getById && context.nodeType === 9 && documentIsHTML &&
           Expr.relative[ tokens[1].type ] ) {
 
-        context = ( Expr.find["ID"]( token.matches[0].replace(runescape, funescape), context ) || [] )[0];
+        context = ( Expr.find.ID( token.matches[0].replace(runescape, funescape), context ) || [] )[0];
         if ( !context ) {
           return results;
         }
@@ -2729,7 +2729,7 @@ function select( selector, context, results, seed ) {
       }
 
       // Fetch a seed set for right-to-left matching
-      i = matchExpr["needsContext"].test( selector ) ? 0 : tokens.length;
+      i = matchExpr.needsContext.test( selector ) ? 0 : tokens.length;
       while ( i-- ) {
         token = tokens[i];
 
@@ -2821,7 +2821,7 @@ if ( !support.attributes || !assert(function( div ) {
 // Support: IE<9
 // Use getAttributeNode to fetch booleans when getAttribute lies
 if ( !assert(function( div ) {
-  return div.getAttribute("disabled") == null;
+  return div.getAttribute("disabled") === null;
 }) ) {
   addHandle( booleans, function( elem, name, isXML ) {
     var val;
@@ -3083,7 +3083,7 @@ jQuery.extend({
         // Get a promise for this deferred
         // If obj is provided, the promise aspect is added to the object
         promise: function( obj ) {
-          return obj != null ? jQuery.extend( obj, promise ) : promise;
+          return obj !== null ? jQuery.extend( obj, promise ) : promise;
         }
       },
       deferred = {};
@@ -3266,7 +3266,7 @@ jQuery.support = (function( support ) {
 
     // Workaround failing boxSizing test due to offsetWidth returning wrong value
     // with some non-1 values of body zoom, ticket #13543
-    jQuery.swap( body, body.style.zoom != null ? { zoom: 1 } : {}, function() {
+    jQuery.swap( body, body.style.zoom !== null ? { zoom: 1 } : {}, function() {
       support.boxSizing = div.offsetWidth === 4;
     });
 
@@ -3975,7 +3975,7 @@ jQuery.fn.extend({
           // handle most common string cases
           ret.replace(rreturn, "") :
           // handle cases where value is null/undef or number
-          ret == null ? "" : ret;
+          ret === null ? "" : ret;
       }
 
       return;
@@ -3997,13 +3997,13 @@ jQuery.fn.extend({
       }
 
       // Treat null/undefined as ""; convert numbers to string
-      if ( val == null ) {
+      if ( val === null ) {
         val = "";
       } else if ( typeof val === "number" ) {
         val += "";
       } else if ( jQuery.isArray( val ) ) {
         val = jQuery.map(val, function ( value ) {
-          return value == null ? "" : value + "";
+          return value === null ? "" : value + "";
         });
       }
 
@@ -4129,7 +4129,7 @@ jQuery.extend({
       ret = jQuery.find.attr( elem, name );
 
       // Non-existent attributes return null, we normalize to undefined
-      return ret == null ?
+      return ret === null ?
         undefined :
         ret;
     }
@@ -4551,7 +4551,7 @@ jQuery.event = {
     }
 
     // Clone any incoming data and prepend the event, creating the handler arg list
-    data = data == null ?
+    data = data === null ?
       [ event ] :
       jQuery.makeArray( data, [ event ] );
 

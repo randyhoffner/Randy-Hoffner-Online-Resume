@@ -31,8 +31,8 @@ $("#header").append(formattedWelcomeMsg);
 
 
 
-for (i in formattedContactInfo) {
-  $("#topContacts").append(formattedContactInfo[i])
+for (var i in formattedContactInfo) {
+  $("#topContacts").append(formattedContactInfo[i]);
   $("#footerContacts").append(formattedContactInfo[i]);
 }
 
@@ -130,7 +130,7 @@ var projects = {
 
 
 function displayWork() {
-  for (job in work.jobs) {
+  for (var job in work.jobs) {
     $("#workExperience").append(HTMLworkStart);
 
     var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -158,7 +158,7 @@ $(document).click(function(loc) {
 
 
 projects.display = function() {
-  for (project in projects.projects) {
+  for (var project in projects.projects) {
     $("#projects").append(HTMLprojectStart);
 
     var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
@@ -171,13 +171,13 @@ projects.display = function() {
     $(".project-entry:last").append(formattedDescription);
 
     if (projects.projects[project].images > 0) {
-      for (image in projects.projects[project].images) {
+      for (var image in projects.projects[project].images) {
         var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
         $(".project-entry:last").append(formattedImage);
       }
     }
   }
-}
+};
 projects.display();
 
 education.display = function() {
@@ -217,7 +217,7 @@ education.display = function() {
       }
     }
   }
-}
+};
 
 education.display();
 
