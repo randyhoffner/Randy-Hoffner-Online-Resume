@@ -9,13 +9,11 @@ var bio = {
     "location": "Ashland, Oregon"
   },
   "welcomeMessage": "Welcome to Randy Hoffner's resume.",
-  "skills": ["tv technologist", "technical writer", "photoshop adept"],
+  "skills": ["tv technologist", "technical writer", "photographer (www.randyhoffner.com)", "photoshop adept"],
   "biopic": "images/randy.jpg",
 };
 
-
 bio.display = function() {
-
   if (bio.skills.length > 0) {
     $("#header").append(HTMLskillsStart);
 
@@ -23,35 +21,27 @@ bio.display = function() {
       $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
     }
   }
+
+
+  var formattedName = HTMLheaderName.replace("%data%", bio.name);
+  var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+  var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
+  var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+  var formattedContactInfo = [];
+  formattedContactInfo.push(HTMLemail.replace("%data%", bio.contacts.email));
+  formattedContactInfo.push(HTMLmobile.replace("%data%", bio.contacts.mobile));
+  formattedContactInfo.push(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+  formattedContactInfo.push(HTMLgithub.replace("%data%", bio.contacts.github));
+  formattedContactInfo.push(HTMLlocation.replace("%data%", bio.contacts.location));
+
+  $("#header").prepend(formattedName).prepend(formattedRole).append(formattedBioPic).append(formattedWelcomeMsg);
+
+  for (var j in formattedContactInfo) {
+    $("#topContacts").append(formattedContactInfo[j]);
+    $("#footerContacts").append(formattedContactInfo[j]);
+  }
 };
-
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
-var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-var formattedContactInfo = [];
-formattedContactInfo.push(HTMLemail.replace("%data%", bio.contacts.email));
-formattedContactInfo.push(HTMLmobile.replace("%data%", bio.contacts.mobile));
-formattedContactInfo.push(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-formattedContactInfo.push(HTMLgithub.replace("%data%", bio.contacts.github));
-formattedContactInfo.push(HTMLlocation.replace("%data%", bio.contacts.location));
-
-$("#header").prepend(formattedName);
-$("#header").prepend(formattedRole);
-$("#header").append(formattedBioPic);
-$("#header").append(formattedWelcomeMsg);
-
-
-
-for (var i in formattedContactInfo) {
-  $("#topContacts").append(formattedContactInfo[i]);
-  $("#footerContacts").append(formattedContactInfo[i]);
-}
-
-
-
-
-bio.display ();
+bio.display();
 
 
 
@@ -83,53 +73,6 @@ var work = {
   }]
 };
 
-var education = {
-  "schools": [{
-    "name": "University of Tulsa",
-    "dates": "1965-1967",
-    "location": "Tulsa, OK",
-    "degree": "BA",
-    "major": "Sociology",
-    "url": "http://www.utulsa.edu"
-  }, {
-    "name": "Oklahoma City University",
-    "dates": "1962-1965",
-    "location": "Oklahoma City, OK",
-    "degree": "attended",
-    "major": "Chemistry",
-    "url": "http://www.okcu.edu"
-  }],
-  "onlineCourses": [{
-    "school": "Udacity",
-    "title": "Intro to HTML and CSS",
-    "date": "November 2015",
-    "url": "https://www.udacity.com/course/ud304"
-  }, {
-    "school": "Udacity",
-    "title": "Responsive Web Design Fundamentals",
-    "date": "November 2015",
-    "url": "https://www.udacity.com/course/ud893"
-  }]
-};
-
-
-var projects = {
-  "projects": [{
-    "title": "DTV Encoder Acquisition",
-    "dates": "1997-1998",
-    "description": "Led effort to purchase original DTV/HTDV encoders for ABC TV network and owned stations.  Wrote RFI and RFP.  Met with manufacturers regarding requirements."
-  }, {
-    "title": "Executive producer, Technology Leadership Summit 2012",
-    "dates": "2011-2012",
-    "description": "Produced two-day technology summit for invited TV executives.  Recruited keynote speakers and panel participants.  Produced program for the event including panel discussion topics."
-  }, {
-    "title": "Immersive Audio Demonstration",
-    "dates": "March-July 2015",
-    "description": "Participated in setup and demonstration of immersive audio mounted by a major European company.  Four-room demo at NAB broadcasters convention in Las Vegas, NV, in April and repeated in July at an industry meeting in Atlanta, GA."
-  }]
-};
-
-
 work.display = function() {
   for (var job in work.jobs) {
     $("#workExperience").append(HTMLworkStart);
@@ -152,35 +95,36 @@ work.display = function() {
 work.display();
 
 
-$(document).click(function(loc) {
-  var x = loc.pageX;
-  var y = loc.pageY;
-  logClicks(x, y);
-});
 
 
-projects.display = function() {
-  for (var project in projects.projects) {
-    $("#projects").append(HTMLprojectStart);
-
-    var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
-    $(".project-entry:last").append(formattedTitle);
-
-    var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
-    $(".project-entry:last").append(formattedDates);
-
-    var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
-    $(".project-entry:last").append(formattedDescription);
-
-    if (projects.projects[project].images > 0) {
-      for (var image in projects.projects[project].images) {
-        var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
-        $(".project-entry:last").append(formattedImage);
-      }
-    }
-  }
+var education = {
+  "schools": [{
+    "name": "University of Tulsa",
+    "dates": "1965-1967",
+    "location": "Tulsa, OK",
+    "degree": "BA",
+    "majors": ["Sociology"],
+    "url": "http://www.utulsa.edu"
+  }, {
+    "name": "Oklahoma City University",
+    "dates": "1962-1965",
+    "location": "Oklahoma City, OK",
+    "degree": "attended",
+    "majors": ["Chemistry"],
+    "url": "http://www.okcu.edu"
+  }],
+  "onlineCourses": [{
+    "school": "Udacity",
+    "title": "Intro to HTML and CSS",
+    "date": "November 2015",
+    "url": "https://www.udacity.com/course/ud304"
+  }, {
+    "school": "Udacity",
+    "title": "Responsive Web Design Fundamentals",
+    "date": "November 2015",
+    "url": "https://www.udacity.com/course/ud893"
+  }]
 };
-projects.display();
 
 education.display = function() {
   if (education.schools.length > 0) {
@@ -197,24 +141,24 @@ education.display = function() {
       var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
       $(".education-entry:last").append(formattedSchoolLocation);
 
-      var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
+      var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
       $(".education-entry:last").append(formattedSchoolMajor);
     }
 
 
     if (education.onlineCourses.length > 0) {
       $("#education").append(HTMLonlineClasses);
-      for (i in education.onlineCourses) {
+      for (var j in education.onlineCourses) {
         $("#education").append(HTMLschoolStart);
 
-        var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title).replace("#", education.onlineCourses[i].url);
+        var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title).replace("#", education.onlineCourses[j].url);
         var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
         $(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
 
         var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].date);
         $(".education-entry:last").append(formattedOnlineDates);
 
-        var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url).replace("#", education.onlineCourses[i].url);
+        var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url).replace("#", education.onlineCourses[j].url);
         $(".education-entry:last").append(formattedOnlineURL);
       }
     }
@@ -222,6 +166,61 @@ education.display = function() {
 };
 
 education.display();
+
+
+var projects = {
+  "projects": [{
+    "title": "Experimental HDTV Shoots at Colonial Williamsburg, VA",
+    "dates": "January, 1991",
+    "description": "Arranged and supervised shooting of experimental HDTV footage at Colonial Williamsburg for use of NBC and partners.",
+    "images": ["images/ring.jpg", "images/nbc.jpg"]
+  }, {
+    "title": "Executive producer, Technology Leadership Summit 2012",
+    "dates": "2011-2012",
+    "description": "Produced two-day technology summit for invited TV executives.  Recruited keynote speakers and panel participants.  Produced program for the event including panel discussion topics.",
+    "images": ["images/agenda1.jpg", "images/summit1.jpg"]
+  }, {
+    "title": "Immersive Audio Demonstration",
+    "dates": "March-July 2015",
+    "description": "Participated in setup and demonstration of immersive audio mounted by a major European company.  Four-room demo at NAB broadcasters convention in Las Vegas, NV, in April and repeated in July at an industry meeting in Atlanta, GA.",
+    "images": ["images/nab.jpg", "images/fraunhofer1.jpg"]
+  }]
+};
+
+projects.display = function() {
+  if (projects.projects.length > 0) {
+    for (var i in projects.projects) {
+      $("#projects").append(HTMLprojectStart);
+
+      var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+      $(".project-entry:last").append(formattedTitle);
+
+      var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+      $(".project-entry:last").append(formattedDates);
+
+      var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+      $(".project-entry:last").append(formattedDescription);
+
+      for (var img in projects.projects[i].images) {
+        var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[img]);
+        $(".project-entry:last").append(formattedImage);
+      }
+    }
+  }
+};
+
+projects.display();
+
+
+$(document).click(function(loc) {
+  var x = loc.pageX;
+  var y = loc.pageY;
+  logClicks(x, y);
+});
+
+
+
+
 
 
 $("#mapDiv").append(googleMap);
