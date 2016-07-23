@@ -1,1 +1,1 @@
-# resumernh
+# resumernh refactored to separate concerns
